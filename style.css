@@ -3,6 +3,14 @@
 .theme-green { --theme-color: #10b981; --theme-glow: rgba(16, 185, 129, 0.5); }
 .theme-purple { --theme-color: #a855f7; --theme-glow: rgba(168, 85, 247, 0.5); }
 
+/* حماية: منع النسخ واختيار النصوص */
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .text-theme { color: var(--theme-color); }
 .bg-theme { background-color: var(--theme-color); }
 .border-theme { border-color: var(--theme-color); }
@@ -14,16 +22,30 @@
 body { font-family: 'Cairo', sans-serif; background-color: #030712; }
 .font-poppins { font-family: 'Poppins', sans-serif; }
 
-.timer-box { background: rgba(17, 24, 39, 0.8); padding: 15px; min-width: 70px; border-radius: 20px; border: 1px solid var(--theme-color); }
+.timer-box { 
+    background: rgba(17, 24, 39, 0.8); 
+    padding: 15px; min-width: 70px; 
+    border-radius: 20px; 
+    border: 1px solid var(--theme-color); 
+}
 .timer-box span { display: block; font-size: 1.8rem; font-weight: 800; color: var(--theme-color); }
 
-.nav-link:hover { color: var(--theme-color); }
+.nav-link:hover { color: var(--theme-color); transition: 0.3s; }
 .reveal { visibility: hidden; }
 
-/* حركات المعاينة */
-#chatFlow { scroll-behavior: smooth; }
+/* تنسيقات المعاينة */
 #chatFlow::-webkit-scrollbar { width: 3px; }
 #chatFlow::-webkit-scrollbar-thumb { background: var(--theme-color); border-radius: 10px; }
 
-.bubble-anim { animation: fadeInSlide 0.3s ease-out forwards; }
-@keyframes fadeInSlide { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.bubble-anim { animation: fadeIn 0.4s ease-out forwards; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* تنبيه التواصل العائم */
+#contact-alert {
+    position: fixed; bottom: 30px; left: 30px;
+    background: #111827; border: 2px solid var(--theme-color);
+    padding: 15px; border-radius: 20px; z-index: 1000;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    animation: slideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+@keyframes slideUp { from { transform: translateY(150px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }

@@ -1,11 +1,20 @@
-// 1. نظام الثيمات
+// 1. نظام الثيمات المتقدم وحماية F12
 function setTheme(color) {
     document.body.className = `bg-gray-950 text-white scroll-smooth select-none theme-${color} overflow-x-hidden`;
     localStorage.setItem('botVaultTheme', color);
 }
 setTheme(localStorage.getItem('botVaultTheme') || 'blue');
 
-// 2. العداد التنازلي
+// منع الـ Debugger وأدوات المطورين
+setInterval(() => {
+    const start = new Date();
+    debugger;
+    if (new Date() - start > 100) {
+        window.location.reload();
+    }
+}, 1000);
+
+// 2. العداد التنازلي الثابت
 function initCountdown() {
     let targetDate = localStorage.getItem('botVaultDeadline') || new Date().getTime() + (100 * 24 * 60 * 60 * 1000);
     localStorage.setItem('botVaultDeadline', targetDate);
@@ -20,37 +29,71 @@ function initCountdown() {
     }, 1000);
 }
 
-// 3. التحكم في المعاينة
+// 3. التحكم في المعاينة التفاعلية
 function openPreview() { document.getElementById('preview-modal').classList.remove('hidden'); }
 function closePreview() { document.getElementById('preview-modal').classList.add('hidden'); }
 
-// وظيفة ردود البوت في المعاينة
 function previewAction(type) {
     const chatFlow = document.getElementById('chatFlow');
-    let msg = "";
-    if(type === 'scan') msg = "🔎 وضع فحص الروابط نشط.. يرجى تزويدي بالرابط.";
-    if(type === 'vault') msg = "🔐 تم تفعيل التشفير العسكري. أدخل نصك لتأمينه.";
-    if(type === 'lang') msg = "🌐 تم ضبط اللغة: العربية. (English soon)";
-    if(type === 'sig') msg = "ℹ️ المطور: @Nxr43 | الإصدار: V1.0 | السيرفر: FPS.ms";
+    let response = "";
+    
+    switch(type) {
+        case 'scan': response = "🔎 نظام الفحص العالمي نشط.. أرسل الرابط المراد تحليله."; break;
+        case 'vault': response = "🔐 نظام التشفير العسكري نشط. أدخل النص المراد حمايته."; break;
+        case 'lang': response = "🌐 تم ضبط لغة الواجهة على: [العربية] بنجاح."; break;
+        case 'sig': 
+            response = `ℹ️ المطور المعتمد: @Nxr43 <br> 📦 الإصدار: V1.0 Stable <br> 🚀 السيرفر: BotVault.up`; 
+            break;
+    }
 
     const div = document.createElement('div');
     div.className = "bg-theme/20 p-2 rounded-lg ml-8 self-start text-white border border-theme/30 bubble-anim";
-    div.innerHTML = msg;
+    div.innerHTML = response;
+    
     chatFlow.appendChild(div);
     chatFlow.scrollTop = chatFlow.scrollHeight;
+
+    // إظهار تنبيه التواصل للتجربة الكاملة
+    showContactAlert();
 }
 
-// 4. الإعدادات الأخرى
-ScrollReveal().reveal('.reveal', { delay: 200, distance: '30px', origin: 'bottom', duration: 800, interval: 100 });
+function showContactAlert() {
+    if(!document.getElementById('contact-alert')) {
+        const alertDiv = document.createElement('div');
+        alertDiv.id = 'contact-alert';
+        alertDiv.className = "font-cairo text-[11px]";
+        alertDiv.innerHTML = `
+            <p class="mb-2 text-white">🚀 لتجربة البوت الحية، تواصل مع المطور:</p>
+            <a href="https://t.me/Nxr43" target="_blank" class="bg-theme text-white px-4 py-2 rounded-xl block text-center font-bold shadow-theme">إرسال رسالة لـ @Nxr43</a>
+        `;
+        document.body.appendChild(alertDiv);
+        setTimeout(() => { if(alertDiv) alertDiv.remove(); }, 7000);
+    }
+}
+
+// 4. الأنظمة التكميلية (الجزيئات والظهور)
+particlesJS("particles-js", {
+    particles: {
+        number: { value: 35 },
+        color: { value: "#ffffff" },
+        opacity: { value: 0.1 },
+        size: { value: 1 },
+        move: { enable: true, speed: 0.6 }
+    }
+});
+
+ScrollReveal().reveal('.reveal', { 
+    delay: 200, 
+    distance: '20px', 
+    origin: 'bottom', 
+    duration: 800, 
+    interval: 100 
+});
 
 function handleWaitlist(e) {
     e.preventDefault();
     document.getElementById('wait-msg').classList.remove('hidden');
     e.target.reset();
 }
-
-particlesJS("particles-js", {
-    particles: { number: { value: 30 }, opacity: { value: 0.1 }, size: { value: 1 }, move: { speed: 0.5 } }
-});
 
 initCountdown();
