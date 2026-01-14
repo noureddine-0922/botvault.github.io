@@ -33,7 +33,6 @@ function initCountdown() {
 function openPreview() { 
     const modal = document.getElementById('preview-modal');
     modal.classList.remove('hidden'); 
-    // تأثير ظهور بسيط
     modal.firstElementChild.classList.remove('scale-95', 'opacity-0');
     modal.firstElementChild.classList.add('scale-100', 'opacity-100');
 }
