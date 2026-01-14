@@ -1,60 +1,60 @@
-// 1. نظام العداد الذكي مع التخزين المحلي (Persistent Countdown)
+// 1. نظام الثيمات (تغيير الألوان وحفظها)
+function setTheme(color) {
+    document.body.className = `bg-gray-950 text-white scroll-smooth select-none theme-${color}`;
+    localStorage.setItem('botVaultTheme', color);
+}
+
+// تحميل الثيم عند فتح الموقع
+const savedTheme = localStorage.getItem('botVaultTheme') || 'blue';
+setTheme(savedTheme);
+
+// 2. العداد التنازلي الثابت (LocalStorage)
 function initCountdown() {
     let targetTime = localStorage.getItem('botVaultDeadline');
-
-    // إذا لم يكن هناك تاريخ محفوظ، نحدد 100 يوم من الآن
     if (!targetTime) {
         targetTime = new Date().getTime() + (100 * 24 * 60 * 60 * 1000);
         localStorage.setItem('botVaultDeadline', targetTime);
     }
 
     setInterval(() => {
-        const now = new Date().getTime();
-        const diff = targetTime - now;
-
+        const diff = targetTime - new Date().getTime();
         if (diff <= 0) {
-            document.getElementById('countdown').innerHTML = "<p class='text-blue-500 font-bold'>تم الإطلاق بنجاح!</p>";
+            document.getElementById('countdown').innerHTML = "<p class='text-theme font-bold'>تم الإطلاق!</p>";
             return;
         }
-
-        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-        document.getElementById('days').innerText = d;
-        document.getElementById('hours').innerText = h < 10 ? '0'+h : h;
-        document.getElementById('minutes').innerText = m < 10 ? '0'+m : m;
-        document.getElementById('seconds').innerText = s < 10 ? '0'+s : s;
+        document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000);
     }, 1000);
 }
 
-// 2. حماية الكود من أدوات المطورين (Anti-DevTools)
+// 3. حماية الكود (Anti-F12)
 setInterval(() => {
-    // محاكاةdebugger لتعطيل أدوات المطورين وإخفاء الكود في f12
     const start = new Date();
     debugger;
-    const end = new Date();
-    if (end - start > 100) {
-        window.location.reload(); // إعادة تشغيل الموقع إذا اكتشف فحص العنصر
-    }
+    if (new Date() - start > 100) window.location.reload();
 }, 1000);
 
-// 3. خلفية الجزيئات (Particles)
+// 4. معالجة نموذج البريد
+function handlePreRegister(e) {
+    e.preventDefault();
+    document.getElementById('reg-msg').classList.remove('hidden');
+    e.target.reset();
+}
+
+// 5. الخلفية المتحركة
 particlesJS("particles-js", {
     particles: {
         number: { value: 40 },
-        color: { value: "#3b82f6" },
+        color: { value: "#ffffff" },
         opacity: { value: 0.1 },
-        size: { value: 1.5 },
-        line_linked: { enable: true, distance: 150, color: "#3b82f6", opacity: 0.1 },
+        size: { value: 1 },
+        line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.05 },
         move: { enable: true, speed: 1 }
     }
 });
 
-function toggleChat() { 
-    document.getElementById('chat-box').classList.toggle('hidden'); 
-}
+function toggleChat() { document.getElementById('chat-box').classList.toggle('hidden'); }
 
-// تشغيل العداد عند التحميل
 initCountdown();

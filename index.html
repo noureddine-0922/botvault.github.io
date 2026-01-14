@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BotVault | حماية وأتمتة</title>
+    <title>BotVault | المنصة المتكاملة</title>
     <link rel="icon" href="https://img.icons8.com/fluency/48/shield-with-crown.png">
     
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
@@ -14,32 +14,40 @@
     <script>
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.onkeydown = function(e) {
-            if (e.keyCode == 123) return false; // F12
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false;
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
+            if (e.keyCode == 123) return false;
+            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) return false;
             if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
         };
     </script>
 </head>
-<body class="bg-gray-950 text-white scroll-smooth select-none"> <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none"></div>
+<body class="bg-gray-950 text-white scroll-smooth select-none theme-blue">
 
-    <nav class="p-5 flex justify-between items-center bg-gray-950/80 border-b border-blue-900/30 sticky top-0 z-50 backdrop-blur-xl">
+    <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none"></div>
+
+    <nav class="p-5 flex justify-between items-center bg-gray-950/80 border-b border-theme sticky top-0 z-50 backdrop-blur-xl">
         <div class="flex items-center gap-3 group">
-            <div class="bg-blue-600 p-2 rounded-lg shadow-[0_0_15px_rgba(37,99,235,0.5)]">
+            <div class="bg-theme p-2 rounded-lg shadow-theme transition-all duration-500">
                 <i data-lucide="shield-check" class="w-6 h-6 text-white"></i>
             </div>
-            <h1 class="text-2xl font-black tracking-tighter font-poppins neon-text">BOT<span class="text-blue-500 font-poppins">VAULT</span></h1>
+            <h1 class="text-2xl font-black tracking-tighter font-poppins neon-text">BOT<span class="text-theme font-poppins transition-colors duration-500">VAULT</span></h1>
         </div>
-        <div class="flex gap-8 font-cairo">
-            <a href="#" class="nav-link">الرئيسية</a>
-            <a href="#bots" class="nav-link">البوتات الذكية</a>
+        
+        <div class="flex items-center gap-6">
+            <div class="flex gap-2 bg-gray-900/80 p-1.5 rounded-full border border-gray-800 shadow-inner">
+                <button onclick="setTheme('blue')" class="w-4 h-4 rounded-full bg-blue-500 hover:scale-125 transition-transform"></button>
+                <button onclick="setTheme('green')" class="w-4 h-4 rounded-full bg-emerald-500 hover:scale-125 transition-transform"></button>
+                <button onclick="setTheme('purple')" class="w-4 h-4 rounded-full bg-purple-500 hover:scale-125 transition-transform"></button>
+            </div>
+            <div class="hidden md:flex gap-8 font-cairo text-sm">
+                <a href="#" class="nav-link">الرئيسية</a>
+                <a href="#roadmap" class="nav-link">خارطة الطريق</a>
+            </div>
         </div>
     </nav>
 
     <div class="pt-10 flex justify-center z-10 relative">
-        <div class="bg-gray-900/50 border border-blue-500/30 p-6 rounded-3xl backdrop-blur-md shadow-[0_0_20px_rgba(59,130,246,0.1)]">
-            <h4 class="text-center text-sm font-cairo mb-4 text-blue-400 font-bold">بدء النسخة التجريبية خلال:</h4>
+        <div class="bg-gray-900/50 border border-theme-soft p-6 rounded-3xl backdrop-blur-md shadow-theme-sm">
+            <h4 class="text-center text-sm font-cairo mb-4 text-theme font-bold transition-colors duration-500">بدء النسخة التجريبية خلال:</h4>
             <div id="countdown" class="flex gap-4 text-center font-poppins">
                 <div class="timer-box"><span id="days">00</span><p class="text-[10px] font-cairo">يوم</p></div>
                 <div class="timer-box"><span id="hours">00</span><p class="text-[10px] font-cairo">ساعة</p></div>
@@ -49,19 +57,19 @@
         </div>
     </div>
 
-    <section id="bots" class="py-32 px-6 relative z-10">
-        <div class="max-w-6xl mx-auto">
-            <h3 class="text-4xl font-bold mb-16 font-cairo text-center">المشاريع القادمة</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bot-card group p-8 bg-gray-900/40 rounded-3xl border border-gray-800 hover:border-blue-500 transition-all">
-                    <i data-lucide="bot" class="w-12 h-12 text-blue-500 mb-6"></i>
-                    <h4 class="text-2xl font-bold mb-3 font-cairo">أنظمة الحماية</h4>
-                    <p class="text-gray-400 font-cairo text-sm">بوتات متطورة لتأمين الخوادم والدردشات بشكل تلقائي.</p>
+    <section id="roadmap" class="py-24 px-6 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-3xl font-bold mb-16 font-cairo text-center">خارطة الطريق <span class="text-theme transition-colors duration-500">2024</span></h3>
+            <div class="relative border-r-2 border-theme-soft pr-8 space-y-12 transition-colors duration-500">
+                <div class="relative">
+                    <div class="absolute -right-[41px] top-0 w-4 h-4 rounded-full bg-theme shadow-theme transition-all duration-500"></div>
+                    <h4 class="text-xl font-bold font-cairo text-theme transition-colors duration-500">الشهر الأول: إطلاق بوت الحماية</h4>
+                    <p class="text-gray-400 text-sm mt-2 font-cairo leading-relaxed">تطوير أنظمة التشفير وحماية الخوادم من الهجمات (قيد التنفيذ 70%).</p>
                 </div>
-                <div class="bot-card group p-8 bg-gray-900/40 rounded-3xl border border-gray-800 hover:border-blue-500 transition-all">
-                    <i data-lucide="cpu" class="w-12 h-12 text-blue-500 mb-6"></i>
-                    <h4 class="text-2xl font-bold mb-3 font-cairo">الأتمتة الذكية</h4>
-                    <p class="text-gray-400 font-cairo text-sm">تنفيذ المهام المعقدة بضغطة زر واحدة.</p>
+                <div class="relative opacity-50">
+                    <div class="absolute -right-[41px] top-0 w-4 h-4 rounded-full bg-gray-700"></div>
+                    <h4 class="text-xl font-bold font-cairo">الشهر الثاني: أنظمة الذكاء الاصطناعي</h4>
+                    <p class="text-gray-400 text-sm mt-2 font-cairo leading-relaxed">دمج الرد الذكي المتطور وأتمتة المهام المعقدة (مخطط له).</p>
                 </div>
             </div>
         </div>
@@ -69,42 +77,48 @@
 
     <section id="status" class="py-10 px-6 relative z-10">
         <div class="max-w-3xl mx-auto bg-gray-900/40 p-8 rounded-3xl border border-gray-800">
-            <h3 class="text-xl font-bold mb-8 font-cairo flex items-center gap-2 text-blue-500 justify-center">
-                <i data-lucide="activity"></i> حالة البوتات الحالية
+            <h3 class="text-xl font-bold mb-8 font-cairo flex items-center gap-2 text-theme justify-center transition-colors duration-500">
+                <i data-lucide="activity"></i> حالة الخدمات
             </h3>
-            <div class="space-y-4 font-cairo text-sm">
-                <div class="flex justify-between items-center p-4 bg-gray-950/50 rounded-xl border border-gray-800">
-                    <span>حالة جميع الخدمات</span>
-                    <span class="flex items-center gap-2 text-red-500 font-bold">
-                        <span class="w-2 h-2 bg-red-500 rounded-full animate-ping"></span> تحت الصيانة
-                    </span>
-                </div>
+            <div class="flex justify-between items-center p-4 bg-gray-950/50 rounded-xl border border-gray-800">
+                <span class="font-cairo text-sm">جميع البوتات الحالية</span>
+                <span class="flex items-center gap-2 text-red-500 font-bold font-cairo text-xs">
+                    <span class="w-2 h-2 bg-red-500 rounded-full animate-ping"></span> تحت الصيانة
+                </span>
             </div>
         </div>
     </section>
 
-    <footer class="py-16 border-t border-gray-900 text-center z-10 relative">
-        <div class="mb-6 flex justify-center gap-4">
-            <i data-lucide="shield" class="text-gray-600 w-5 h-5"></i>
-            <i data-lucide="lock" class="text-gray-600 w-5 h-5"></i>
-            <i data-lucide="server" class="text-gray-600 w-5 h-5"></i>
+    <section class="py-20 bg-gray-900/20 border-y border-gray-900 relative z-10">
+        <div class="max-w-2xl mx-auto px-6 text-center">
+            <i data-lucide="mail" class="w-12 h-12 text-theme mx-auto mb-6 transition-colors duration-500"></i>
+            <h3 class="text-2xl font-bold mb-4 font-cairo text-white">كن أول من يجرب BotVault</h3>
+            <p class="text-gray-400 mb-8 font-cairo">سجل بريدك الإلكتروني للحصول على دعوة حصرية عند انتهاء العداد.</p>
+            <form onsubmit="handlePreRegister(event)" class="flex flex-col sm:flex-row gap-3">
+                <input type="email" required placeholder="ادخل بريدك الإلكتروني..." class="flex-1 bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 outline-none focus:border-theme transition-all font-cairo text-sm">
+                <button type="submit" class="bg-theme px-8 py-3 rounded-xl font-bold font-cairo hover:scale-105 transition-all shadow-theme duration-500">تفعيل التنبيه</button>
+            </form>
+            <p id="reg-msg" class="mt-4 text-xs text-emerald-500 hidden font-cairo animate-bounce">تم تسجيلك بنجاح! سنرسل لك إشعاراً قريباً.</p>
         </div>
-        <p class="font-cairo text-gray-500 text-sm">
-            جميع الحقوق محفوظة لـ <span class="text-blue-500 font-poppins font-bold">BotVault</span> &copy; 2024
+    </section>
+
+    <footer class="py-12 text-center z-10 relative">
+        <p class="font-cairo text-gray-600 text-xs">
+            جميع الحقوق محفوظة لـ <span class="text-theme font-bold font-poppins transition-colors duration-500">BotVault</span> &copy; 2024
         </p>
     </footer>
 
     <div class="fixed bottom-8 left-8 z-[100]">
-        <div id="chat-box" class="hidden w-80 bg-gray-950 border border-blue-900/30 rounded-3xl mb-4 overflow-hidden shadow-2xl font-cairo">
-            <div class="bg-blue-600 p-4 flex justify-between items-center shadow-lg">
-                <div class="flex items-center gap-2 font-bold"><i data-lucide="lock" class="w-5 h-5"></i><span>أمان BotVault</span></div>
+        <div id="chat-box" class="hidden w-80 bg-gray-950 border border-blue-900/30 rounded-3xl mb-4 overflow-hidden shadow-2xl font-cairo transition-all">
+            <div class="bg-theme p-4 flex justify-between items-center transition-colors duration-500">
+                <div class="flex items-center gap-2 font-bold"><i data-lucide="lock" class="w-5 h-5"></i><span>أمان المنصة</span></div>
                 <button onclick="toggleChat()"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
             <div id="chat-content" class="h-64 p-5 overflow-y-auto flex flex-col gap-4 bg-black/20 text-xs text-right">
-                <div class="bg-gray-800 p-3 rounded-2xl rounded-tr-none self-start border border-gray-700">النظام حالياً في وضع التطوير. سيتم إطلاق البوتات قريباً.</div>
+                <div class="bg-gray-800 p-3 rounded-2xl rounded-tr-none self-start border border-gray-700 leading-relaxed">مرحباً! نظامنا حالياً في مرحلة "خارطة الطريق". لا يمكن استقبال الطلبات حتى انتهاء العداد.</div>
             </div>
         </div>
-        <button onclick="toggleChat()" class="bg-blue-600 w-14 h-14 rounded-full shadow-[0_0_20px_rgba(37,99,235,0.4)] flex items-center justify-center hover:scale-110 transition-all">
+        <button onclick="toggleChat()" class="bg-theme w-14 h-14 rounded-full shadow-theme flex items-center justify-center hover:scale-110 transition-all duration-500">
             <i data-lucide="shield-alert" class="text-white w-7 h-7"></i>
         </button>
     </div>
