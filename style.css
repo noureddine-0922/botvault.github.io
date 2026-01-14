@@ -3,27 +3,26 @@
 .theme-green { --theme-color: #10b981; --theme-glow: rgba(16, 185, 129, 0.5); }
 .theme-purple { --theme-color: #a855f7; --theme-glow: rgba(168, 85, 247, 0.5); }
 
-.text-theme { color: var(--theme-color); transition: 0.4s; }
-.bg-theme { background-color: var(--theme-color); transition: 0.4s; }
+.text-theme { color: var(--theme-color); }
+.bg-theme { background-color: var(--theme-color); }
 .border-theme { border-color: var(--theme-color); }
-.border-theme-soft { border-color: rgba(from var(--theme-color) r g b / 0.1); }
+.border-theme-soft { border-color: rgba(255, 255, 255, 0.05); }
 .shadow-theme { box-shadow: 0 0 15px var(--theme-glow); }
 .shadow-theme-sm { box-shadow: 0 0 30px rgba(0,0,0,0.5), 0 0 10px var(--theme-glow); }
 .neon-text { text-shadow: 0 0 10px var(--theme-glow); }
 
-body { cursor: none; } /* إخفاء الماوس الأصلي */
+body { font-family: 'Cairo', sans-serif; background-color: #030712; }
+.font-poppins { font-family: 'Poppins', sans-serif; }
 
-/* الماوس المخصص */
-#cursor-dot { width: 8px; height: 8px; background: var(--theme-color); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.1s ease; box-shadow: 0 0 10px var(--theme-color); }
-#cursor-outline { width: 40px; height: 40px; border: 2px solid var(--theme-color); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transition: transform 0.15s ease-out, opacity 0.3s; opacity: 0.5; }
+.nav-link { position: relative; transition: 0.3s; }
+.nav-link:hover { color: var(--theme-color); }
 
-/* شريط الأخبار المتحرك */
-.animate-marquee { animation: marquee 30s linear infinite; width: max-content; }
-@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+.timer-box { 
+    background: rgba(17, 24, 39, 0.8); 
+    padding: 15px; min-width: 70px; 
+    border-radius: 20px; 
+    border: 1px solid var(--theme-color); 
+}
+.timer-box span { display: block; font-size: 1.8rem; font-weight: 800; color: var(--theme-color); }
 
-/* صناديق العداد */
-.timer-box { background: rgba(17, 24, 39, 0.8); padding: 10px; min-width: 60px; border-radius: 15px; border: 1px solid var(--theme-color); text-align: center; }
-.timer-box span { display: block; font-size: 1.4rem; font-weight: 800; color: var(--theme-color); }
-
-.ltr-content { direction: ltr; text-align: left; }
-.font-fira { font-family: 'Fira Code', monospace; }
+.select-none { user-select: none; -webkit-user-select: none; }
