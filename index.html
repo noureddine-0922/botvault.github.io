@@ -7,57 +7,40 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-900 text-white font-sans overflow-x-hidden">
+<body class="bg-gray-900 text-white font-sans">
 
-    <nav class="p-5 flex justify-between items-center bg-gray-900/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
-        <div class="flex items-center gap-3">
-            <div class="bg-blue-600 p-2 rounded-xl shadow-lg shadow-blue-500/20 logo-animate">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-            </div>
-            <h1 class="text-2xl font-black tracking-tighter">BOT<span class="text-blue-500">VAULT</span></h1>
-        </div>
-        <div class="hidden md:flex gap-6 text-gray-400">
-            <a href="#" class="hover:text-white transition">الرئيسية</a>
-            <a href="#bots" class="hover:text-white transition">بوتاتنا</a>
+    <nav class="p-5 flex justify-between items-center bg-gray-900/80 border-b border-gray-800 sticky top-0 z-50">
+        <h1 class="text-2xl font-black">BOT<span class="text-blue-500">VAULT</span></h1>
+        <div class="flex gap-4">
+            <a href="#bots" class="hover:text-blue-500">بوتاتنا</a>
         </div>
     </nav>
 
     <header class="py-20 px-6 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-5xl md:text-7xl font-extrabold mt-6 mb-8 leading-tight">مستقبل الأتمتة <br><span class="text-blue-500">بين يديك</span></h2>
-            <p class="text-gray-400 text-lg mb-10">منصة مخصصة لتطوير واستضافة البوتات الذكية بشكل احترافي.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#bots" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-2xl font-bold transition-all transform hover:scale-105">استكشف بوتاتنا</a>
-            </div>
-        </div>
+        <h2 class="text-5xl font-extrabold mb-6">مستقبل الأتمتة <br><span class="text-blue-500">بين يديك</span></h2>
+        <p class="text-gray-400 mb-10">منصة مخصصة لتطوير واستضافة البوتات الذكية.</p>
+        <a href="#bots" class="px-8 py-4 bg-blue-600 rounded-2xl font-bold">استكشف بوتاتنا</a>
     </header>
 
-    <div id="chat-container" class="fixed bottom-5 left-5 z-[100] flex flex-col items-end">
-        <div id="chat-box" class="hidden w-80 bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl mb-4 overflow-hidden flex flex-col">
-            <div class="bg-blue-600 p-4 font-bold flex justify-between items-center">
-                <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 bg-green-400 rounded-full"></span>
-                    <span>مساعد BotVault الآلي</span>
-                </div>
-                <button onclick="toggleChat()" class="text-xl hover:text-gray-200">×</button>
+    <section id="bots" class="py-32 bg-gray-800/50 text-center">
+        <h3 class="text-3xl font-bold">قسم البوتات قريباً</h3>
+    </section>
+
+    <div class="fixed bottom-5 left-5 z-[100]">
+        <div id="chat-box" class="hidden w-72 bg-gray-900 border border-gray-700 rounded-2xl mb-4 overflow-hidden shadow-2xl">
+            <div class="bg-blue-600 p-4 flex justify-between">
+                <span>مساعد BotVault</span>
+                <button onclick="toggleChat()">×</button>
             </div>
-            <div id="chat-content" class="h-80 overflow-y-auto p-4 space-y-4 text-sm flex flex-col bg-gray-900/50">
-                <div class="bg-gray-800 p-3 rounded-2xl rounded-tr-none self-start max-w-[80%]">مرحباً! أنا البوت الخاص بالموقع. اسألني أي شيء عن BotVault!</div>
+            <div id="chat-content" class="h-64 p-4 overflow-y-auto text-sm flex flex-col gap-2">
+                <div class="bg-gray-800 p-2 rounded-lg self-start">مرحباً! اسألني أي شيء.</div>
             </div>
-            <div class="p-3 border-t border-gray-800 bg-gray-900 flex gap-2">
-                <input id="user-input" type="text" placeholder="اكتب سؤالك هنا..." class="flex-1 bg-gray-800 p-2 rounded-xl outline-none border border-transparent focus:border-blue-500 transition-all text-xs">
-                <button onclick="sendMessage()" class="bg-blue-600 p-2 rounded-xl hover:bg-blue-700 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
-                    </svg>
-                </button>
+            <div class="p-2 border-t border-gray-800 flex">
+                <input id="user-input" type="text" placeholder="اكتب هنا..." class="w-full bg-gray-800 p-2 rounded-l-lg outline-none text-xs text-white">
+                <button onclick="sendMessage()" class="bg-blue-600 px-3 rounded-r-lg">➔</button>
             </div>
         </div>
-        <button onclick="toggleChat()" class="bg-blue-600 w-14 h-14 rounded-full shadow-xl shadow-blue-600/20 flex items-center justify-center hover:scale-110 active:scale-95 transition-all text-2xl">
-            💬
-        </button>
+        <button onclick="toggleChat()" class="bg-blue-600 w-14 h-14 rounded-full text-2xl shadow-lg">💬</button>
     </div>
 
     <script src="script.js"></script>
