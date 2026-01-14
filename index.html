@@ -3,46 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BotVault | منصة البوتات</title>
+    <title>BotVault | منصة الأتمتة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-900 text-white font-sans">
+<body class="bg-gray-900 text-white scroll-smooth">
 
-    <nav class="p-5 flex justify-between items-center bg-gray-900/80 border-b border-gray-800 sticky top-0 z-50">
-        <h1 class="text-2xl font-black">BOT<span class="text-blue-500">VAULT</span></h1>
-        <div class="flex gap-4">
-            <a href="#bots" class="hover:text-blue-500">بوتاتنا</a>
+    <nav class="p-5 flex justify-between items-center bg-gray-900/90 border-b border-gray-800 sticky top-0 z-50 backdrop-blur-md">
+        <div class="flex items-center gap-3">
+            <div class="bg-blue-600 p-2 rounded-lg shadow-lg shadow-blue-500/30">
+                <i data-lucide="cpu" class="w-6 h-6 text-white"></i>
+            </div>
+            <h1 class="text-2xl font-black tracking-tighter font-poppins">BOT<span class="text-blue-500 font-poppins">VAULT</span></h1>
+        </div>
+        <div class="flex gap-8 font-cairo">
+            <a href="#" class="nav-link relative py-1 overflow-hidden group">الرئيسية</a>
+            <a href="#bots" class="nav-link relative py-1 overflow-hidden group">المشاريع الذكية</a>
         </div>
     </nav>
 
-    <header class="py-20 px-6 text-center">
-        <h2 class="text-5xl font-extrabold mb-6">مستقبل الأتمتة <br><span class="text-blue-500">بين يديك</span></h2>
-        <p class="text-gray-400 mb-10">منصة مخصصة لتطوير واستضافة البوتات الذكية.</p>
-        <a href="#bots" class="px-8 py-4 bg-blue-600 rounded-2xl font-bold">استكشف بوتاتنا</a>
+    <header class="min-h-screen flex flex-col items-center justify-center text-center px-6 section-blue">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-6xl md:text-8xl font-black mb-8 leading-tight font-cairo tracking-tight">مستقبل الأتمتة <br><span class="text-blue-400">بين يديك</span></h2>
+            <p class="text-gray-300 text-xl mb-12 max-w-2xl mx-auto font-cairo">نحن نبني الجيل القادم من البوتات لتسهيل أعمالك الرقمية.</p>
+            <a href="#bots" class="btn-primary inline-flex items-center gap-3 px-10 py-5 bg-blue-600 rounded-2xl font-bold text-lg transition-all font-cairo">
+                استكشف مشاريعنا
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            </a>
+        </div>
     </header>
 
-    <section id="bots" class="py-32 bg-gray-800/50 text-center">
-        <h3 class="text-3xl font-bold">قسم البوتات قريباً</h3>
-    </section>
-
-    <div class="fixed bottom-5 left-5 z-[100]">
-        <div id="chat-box" class="hidden w-72 bg-gray-900 border border-gray-700 rounded-2xl mb-4 overflow-hidden shadow-2xl">
-            <div class="bg-blue-600 p-4 flex justify-between">
-                <span>مساعد BotVault</span>
-                <button onclick="toggleChat()">×</button>
-            </div>
-            <div id="chat-content" class="h-64 p-4 overflow-y-auto text-sm flex flex-col gap-2">
-                <div class="bg-gray-800 p-2 rounded-lg self-start">مرحباً! اسألني أي شيء.</div>
-            </div>
-            <div class="p-2 border-t border-gray-800 flex">
-                <input id="user-input" type="text" placeholder="اكتب هنا..." class="w-full bg-gray-800 p-2 rounded-l-lg outline-none text-xs text-white">
-                <button onclick="sendMessage()" class="bg-blue-600 px-3 rounded-r-lg">➔</button>
+    <section id="bots" class="py-32 px-6 section-purple">
+        <div class="max-w-6xl mx-auto text-center">
+            <h3 class="text-4xl font-bold mb-16 font-cairo">المشاريع الذكية</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="card bg-gray-900/50 p-8 rounded-3xl border border-gray-700 hover:border-purple-500 transition-all">
+                    <i data-lucide="bot" class="w-12 h-12 text-purple-500 mb-6"></i>
+                    <h4 class="text-xl font-bold mb-4 font-cairo text-white">بوت الدعم</h4>
+                    <p class="text-gray-400 font-cairo text-sm">ردود ذكية وفورية على مدار الساعة.</p>
+                </div>
             </div>
         </div>
-        <button onclick="toggleChat()" class="bg-blue-600 w-14 h-14 rounded-full text-2xl shadow-lg">💬</button>
+    </section>
+
+    <div class="fixed bottom-8 left-8 z-[100]">
+        <div id="chat-box" class="hidden w-80 bg-gray-900 border border-gray-800 rounded-3xl mb-4 overflow-hidden shadow-2xl transition-all font-cairo">
+            <div class="bg-blue-600 p-5 flex justify-between items-center font-bold">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    <span>مساعد BotVault</span>
+                </div>
+                <button onclick="toggleChat()" class="hover:bg-blue-700 rounded-full p-1"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <div id="chat-content" class="h-80 p-5 overflow-y-auto flex flex-col gap-4 bg-gray-900/80">
+                <div class="bg-gray-800 p-3 rounded-2xl rounded-tr-none self-start max-w-[85%]">مرحباً! كيف يمكنني مساعدتك بخصوص BotVault اليوم؟</div>
+            </div>
+            <div class="p-4 border-t border-gray-800 flex gap-2">
+                <input id="user-input" type="text" placeholder="اكتب سؤالك هنا..." class="flex-1 bg-gray-800 p-3 rounded-xl outline-none text-xs">
+                <button onclick="sendMessage()" class="bg-blue-600 p-3 rounded-xl hover:bg-blue-700"><i data-lucide="send" class="w-4 h-4"></i></button>
+            </div>
+        </div>
+        <button onclick="toggleChat()" class="bg-blue-600 w-16 h-16 rounded-full shadow-xl shadow-blue-600/30 flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+            <i data-lucide="bot-message-square" class="text-white w-8 h-8"></i>
+        </button>
     </div>
 
     <script src="script.js"></script>
+    <script>lucide.createIcons();</script>
 </body>
 </html>

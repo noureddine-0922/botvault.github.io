@@ -1,29 +1,43 @@
-/* تحسين التمرير */
-html {
-    scroll-behavior: smooth;
+:root {
+    --blue-gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    --purple-gradient: linear-gradient(135deg, #2e1065 0%, #0f172a 100%);
 }
 
-/* خلفية متدرجة */
 body {
-    background-image: radial-gradient(circle at top right, rgba(37, 99, 235, 0.08), transparent 400px),
-                      radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.08), transparent 400px);
+    font-family: 'Cairo', sans-serif;
 }
 
-/* أنيميشن اللوجو */
-.logo-animate {
-    animation: pulse 2s infinite ease-in-out;
+.font-poppins {
+    font-family: 'Poppins', sans-serif;
 }
 
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.08); opacity: 0.9; }
+/* تأثير النزول للألوان */
+.section-blue { background: var(--blue-gradient); }
+.section-purple { background: var(--purple-gradient); }
+
+/* تأثير الـ Hover على الروابط */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background: #3b82f6;
+    transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+    width: 100%;
 }
 
-/* تنسيق فقاعات الدردشة */
-#chat-content::-webkit-scrollbar {
-    width: 4px;
+/* زر استكشف بوتاتنا */
+.btn-primary:hover {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+    transform: translateY(-5px);
+    cursor: pointer;
 }
-#chat-content::-webkit-scrollbar-thumb {
-    background: #374151;
-    border-radius: 10px;
+
+.card:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
 }
