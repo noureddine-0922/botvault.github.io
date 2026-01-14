@@ -6,16 +6,13 @@
 .text-theme { color: var(--theme-color); }
 .bg-theme { background-color: var(--theme-color); }
 .border-theme { border-color: var(--theme-color); }
-.border-theme-soft { border-color: rgba(255, 255, 255, 0.05); }
+.border-theme-soft { border-color: rgba(from var(--theme-color) r g b / 0.1); }
 .shadow-theme { box-shadow: 0 0 15px var(--theme-glow); }
 .shadow-theme-sm { box-shadow: 0 0 30px rgba(0,0,0,0.5), 0 0 10px var(--theme-glow); }
 .neon-text { text-shadow: 0 0 10px var(--theme-glow); }
 
 body { font-family: 'Cairo', sans-serif; background-color: #030712; }
 .font-poppins { font-family: 'Poppins', sans-serif; }
-
-.nav-link { position: relative; transition: 0.3s; }
-.nav-link:hover { color: var(--theme-color); }
 
 .timer-box { 
     background: rgba(17, 24, 39, 0.8); 
@@ -25,4 +22,7 @@ body { font-family: 'Cairo', sans-serif; background-color: #030712; }
 }
 .timer-box span { display: block; font-size: 1.8rem; font-weight: 800; color: var(--theme-color); }
 
-.select-none { user-select: none; -webkit-user-select: none; }
+.nav-link:hover { color: var(--theme-color); }
+
+/* تحسينات الظهور الناعم */
+.reveal { visibility: hidden; }
