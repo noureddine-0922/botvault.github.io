@@ -10,10 +10,6 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <link rel="stylesheet" href="style.css">
-    <script>
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.onkeydown = e => { if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || (e.ctrlKey && e.keyCode == 85)) return false; };
-    </script>
 </head>
 <body class="bg-gray-950 text-white scroll-smooth select-none theme-blue overflow-x-hidden">
 
@@ -68,93 +64,80 @@
                     <h4 class="text-xl font-bold font-cairo text-theme italic">المرحلة الأولى: بوت الحماية القصوى</h4>
                     <p class="text-gray-400 text-sm mt-2 font-cairo">قيد التنفيذ (5% تم الإنجاز)</p>
                 </div>
-                <div class="relative blur-md opacity-20 select-none">
-                    <div class="absolute -right-[41px] top-0 w-4 h-4 rounded-full bg-gray-700"></div>
-                    <h4 class="text-xl font-bold font-cairo">المرحلة الثانية: [مشفر]</h4>
-                </div>
             </div>
         </div>
     </section>
 
     <section id="projects" class="reveal py-20 px-6 relative z-10 max-w-5xl mx-auto">
         <h3 class="text-center text-2xl font-bold mb-12 font-cairo italic">المشاريع التقنية</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 font-cairo mb-16">
-            <div class="p-8 bg-gray-900/40 border border-gray-800 rounded-3xl hover:border-theme transition-all group cursor-pointer">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 font-cairo">
+            <div class="p-8 bg-gray-900/40 border border-gray-800 rounded-3xl">
                 <i data-lucide="bot" class="w-10 h-10 text-theme mb-4"></i>
                 <h4 class="text-lg font-bold mb-2">أنظمة رد ذكية</h4>
-                <p class="text-gray-500 text-sm">برمجيات رد تلقائي تعتمد على خوارزميات التشفير الحديثة.</p>
+                <p class="text-gray-500 text-sm">برمجيات رد تلقائي تعتمد على خوارزميات التشفير.</p>
             </div>
             <div onclick="openPreview()" class="p-8 bg-gray-900/40 border border-theme/30 rounded-3xl shadow-theme-sm cursor-pointer hover:scale-[1.02] transition-all">
                 <div class="flex justify-between items-start">
                     <i data-lucide="shield-check" class="w-10 h-10 text-emerald-500 mb-4"></i>
-                    <span class="text-[10px] bg-emerald-500/10 text-emerald-500 px-2 py-1 rounded">معاينة سريعة</span>
+                    <span class="text-[10px] bg-emerald-500/10 text-emerald-500 px-2 py-1 rounded animate-pulse">معاينة سريعة</span>
                 </div>
                 <h4 class="text-lg font-bold mb-2 text-emerald-500">بوت أمان BotVault</h4>
                 <p class="text-gray-500 text-sm">البوت الأول المختص في حماية الخصوصية وتأمين الدردشات.</p>
             </div>
         </div>
-
-        <div class="text-center border-t border-gray-900 pt-12">
-            <p class="text-gray-500 text-xs mb-6 font-cairo">التقنيات المستخدمة في تطوير أنظمتنا:</p>
-            <div class="flex justify-center gap-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-                <div class="flex flex-col items-center gap-2">
-                    <i data-lucide="code-2" class="w-6 h-6 text-blue-400"></i>
-                    <span class="text-[10px] font-poppins">PYTHON</span>
-                </div>
-                <div class="flex flex-col items-center gap-2">
-                    <i data-lucide="cpu" class="w-6 h-6 text-yellow-500"></i>
-                    <span class="text-[10px] font-poppins">NODE.JS</span>
-                </div>
-                <div class="flex flex-col items-center gap-2">
-                    <i data-lucide="database" class="w-6 h-6 text-emerald-400"></i>
-                    <span class="text-[10px] font-poppins">SQLITE</span>
-                </div>
-                <div class="flex flex-col items-center gap-2">
-                    <i data-lucide="terminal" class="w-6 h-6 text-purple-400"></i>
-                    <span class="text-[10px] font-poppins">PHP</span>
-                </div>
-            </div>
-        </div>
     </section>
 
-    <section id="waitlist" class="reveal py-20 bg-gray-900/20 border-y border-gray-900 relative z-10 text-center px-6">
-        <div class="max-w-lg mx-auto">
-            <h3 class="font-cairo text-xl font-bold mb-4">انضم لقائمة الانتظار</h3>
-            <p class="text-gray-500 text-sm mb-8 font-cairo">سنرسل لك رابط البوت فور جاهزيته للانطلاق.</p>
-            <form onsubmit="handleWaitlist(event)" class="flex gap-2">
-                <input type="email" required placeholder="بريدك الإلكتروني..." class="flex-1 bg-gray-800 rounded-xl px-4 py-3 outline-none border border-gray-700 focus:border-theme text-xs font-cairo">
-                <button type="submit" class="bg-theme px-6 py-3 rounded-xl text-xs font-bold font-cairo shadow-theme transition-all">تفعيل</button>
-            </form>
-            <p id="wait-msg" class="mt-4 text-emerald-500 text-xs font-cairo hidden">تمت إضافتك بنجاح! كونوا على الموعد.</p>
-        </div>
-    </section>
-
-    <div id="preview-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-6 bg-black/90 backdrop-blur-sm">
-        <div class="bg-gray-900 border border-theme rounded-[2rem] max-w-sm w-full overflow-hidden shadow-2xl">
+    <div id="preview-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-6 bg-black/95 backdrop-blur-md">
+        <div class="bg-gray-900 border border-theme rounded-[2.5rem] max-w-sm w-full overflow-hidden shadow-theme-sm">
             <div class="p-4 border-b border-gray-800 flex justify-between items-center bg-gray-800/50">
-                <span class="font-cairo text-xs font-bold">معاينة واجهة البوت</span>
+                <span class="font-cairo text-xs font-bold text-theme">🤖 واجهة BotVault V1.0</span>
                 <button onclick="closePreview()" class="text-gray-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
-            <div class="p-6 flex flex-col items-center gap-4">
-                <div class="w-full bg-gray-950 border border-gray-800 rounded-2xl p-4 font-cairo text-[10px] space-y-3">
-                    <div class="bg-theme/20 p-2 rounded-lg ml-8">مرحباً بك في BotVault! أرسل رابطاً لفحصه.</div>
-                    <div class="bg-gray-800 p-2 rounded-lg mr-8 text-left italic">https://example.com</div>
-                    <div class="bg-emerald-500/20 p-2 rounded-lg ml-8 border border-emerald-500/30 font-bold text-emerald-500">✅ الرابط آمن ومشفر بنسبة 100%.</div>
+            <div class="p-6">
+                <div class="mb-5 font-cairo">
+                    <div class="flex justify-between text-[10px] text-gray-400 mb-2">
+                        <span>⚙️ حالة تنفيذ النظام</span>
+                        <span class="text-theme font-bold">60%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-theme h-full shadow-theme" style="width: 60%"></div>
+                    </div>
                 </div>
-                <p class="text-[10px] text-gray-500 text-center font-cairo">واجهة بسيطة، سريعة، ومحمية بالكامل.</p>
+
+                <div id="chatFlow" class="w-full bg-gray-950 border border-gray-800 rounded-2xl p-4 font-cairo text-[10px] space-y-3 h-44 overflow-y-auto flex flex-col">
+                    <div class="bg-theme/20 p-2 rounded-lg ml-8 self-start text-white border border-theme/30">
+                        مرحباً بك في المعاينة السريعة! أنا نظام آمان برمجني المطور @Nxr43. اختر أمراً من الأسفل:
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 mt-4 font-cairo text-[10px]">
+                    <button onclick="previewAction('scan')" class="bg-gray-800 hover:bg-theme border border-gray-700 py-2 rounded-lg transition-all">🛡️ فحص الرابط</button>
+                    <button onclick="previewAction('vault')" class="bg-gray-800 hover:bg-theme border border-gray-700 py-2 rounded-lg transition-all">🔐 تشفير</button>
+                    <button onclick="previewAction('lang')" class="bg-gray-800 hover:bg-theme border border-gray-700 py-2 rounded-lg transition-all">🌐 اللغة</button>
+                    <button onclick="previewAction('sig')" class="bg-gray-800 hover:bg-theme border border-gray-700 py-2 rounded-lg transition-all">ℹ️ المطور</button>
+                </div>
             </div>
         </div>
     </div>
 
+    <section id="waitlist" class="reveal py-20 bg-gray-900/20 border-y border-gray-900 relative z-10 text-center px-6">
+        <div class="max-w-lg mx-auto">
+            <h3 class="font-cairo text-xl font-bold mb-4">انضم لقائمة الانتظار</h3>
+            <form onsubmit="handleWaitlist(event)" class="flex gap-2">
+                <input type="email" required placeholder="بريدك الإلكتروني..." class="flex-1 bg-gray-800 rounded-xl px-4 py-3 outline-none border border-gray-700 focus:border-theme text-xs font-cairo">
+                <button type="submit" class="bg-theme px-6 py-3 rounded-xl text-xs font-bold font-cairo">تفعيل</button>
+            </form>
+            <p id="wait-msg" class="mt-4 text-emerald-500 text-xs font-cairo hidden">تمت إضافتك بنجاح!</p>
+        </div>
+    </section>
+
     <div class="py-16 flex flex-col items-center gap-6 relative z-10">
         <div class="flex gap-3 bg-gray-900/80 p-2 rounded-full border border-gray-800">
-            <button onclick="setTheme('blue')" class="w-5 h-5 rounded-full bg-blue-500 hover:scale-110 transition-all"></button>
-            <button onclick="setTheme('green')" class="w-5 h-5 rounded-full bg-emerald-500 hover:scale-110 transition-all"></button>
-            <button onclick="setTheme('purple')" class="w-5 h-5 rounded-full bg-purple-500 hover:scale-110 transition-all"></button>
+            <button onclick="setTheme('blue')" class="w-5 h-5 rounded-full bg-blue-500"></button>
+            <button onclick="setTheme('green')" class="w-5 h-5 rounded-full bg-emerald-500"></button>
+            <button onclick="setTheme('purple')" class="w-5 h-5 rounded-full bg-purple-500"></button>
         </div>
-        <footer class="font-cairo text-[10px] text-gray-700 uppercase tracking-widest">
-            BotVault &copy; 2024 | All Security Reserved
-        </footer>
+        <footer class="font-cairo text-[10px] text-gray-700">BotVault &copy; 2024</footer>
     </div>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>

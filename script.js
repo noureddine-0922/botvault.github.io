@@ -5,7 +5,7 @@ function setTheme(color) {
 }
 setTheme(localStorage.getItem('botVaultTheme') || 'blue');
 
-// 2. العداد التنازلي الثابت
+// 2. العداد التنازلي
 function initCountdown() {
     let targetDate = localStorage.getItem('botVaultDeadline') || new Date().getTime() + (100 * 24 * 60 * 60 * 1000);
     localStorage.setItem('botVaultDeadline', targetDate);
@@ -20,39 +20,37 @@ function initCountdown() {
     }, 1000);
 }
 
-// 3. تأثير الظهور الناعم (Scroll Reveal)
-ScrollReveal().reveal('.reveal', { 
-    delay: 200, 
-    distance: '30px', 
-    origin: 'bottom', 
-    duration: 800, 
-    interval: 100 
-});
-
-// 4. التحكم في نافذة المعاينة
+// 3. التحكم في المعاينة
 function openPreview() { document.getElementById('preview-modal').classList.remove('hidden'); }
 function closePreview() { document.getElementById('preview-modal').classList.add('hidden'); }
 
-// 5. قائمة الانتظار
+// وظيفة ردود البوت في المعاينة
+function previewAction(type) {
+    const chatFlow = document.getElementById('chatFlow');
+    let msg = "";
+    if(type === 'scan') msg = "🔎 وضع فحص الروابط نشط.. يرجى تزويدي بالرابط.";
+    if(type === 'vault') msg = "🔐 تم تفعيل التشفير العسكري. أدخل نصك لتأمينه.";
+    if(type === 'lang') msg = "🌐 تم ضبط اللغة: العربية. (English soon)";
+    if(type === 'sig') msg = "ℹ️ المطور: @Nxr43 | الإصدار: V1.0 | السيرفر: FPS.ms";
+
+    const div = document.createElement('div');
+    div.className = "bg-theme/20 p-2 rounded-lg ml-8 self-start text-white border border-theme/30 bubble-anim";
+    div.innerHTML = msg;
+    chatFlow.appendChild(div);
+    chatFlow.scrollTop = chatFlow.scrollHeight;
+}
+
+// 4. الإعدادات الأخرى
+ScrollReveal().reveal('.reveal', { delay: 200, distance: '30px', origin: 'bottom', duration: 800, interval: 100 });
+
 function handleWaitlist(e) {
     e.preventDefault();
     document.getElementById('wait-msg').classList.remove('hidden');
     e.target.reset();
 }
 
-// 6. حماية F12
-setInterval(() => { const s = new Date(); debugger; if (new Date() - s > 100) window.location.reload(); }, 1000);
-
-// 7. جزيئات الخلفية
 particlesJS("particles-js", {
-    particles: {
-        number: { value: 30 },
-        color: { value: "#ffffff" },
-        opacity: { value: 0.1 },
-        size: { value: 1 },
-        line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.05 },
-        move: { enable: true, speed: 0.5 }
-    }
+    particles: { number: { value: 30 }, opacity: { value: 0.1 }, size: { value: 1 }, move: { speed: 0.5 } }
 });
 
 initCountdown();
