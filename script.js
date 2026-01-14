@@ -5,7 +5,7 @@ function setTheme(color) {
 }
 setTheme(localStorage.getItem('botVaultTheme') || 'blue');
 
-// منع الـ Debugger وأدوات المطورين
+// منع أدوات المطورين
 setInterval(() => {
     const start = new Date();
     debugger;
@@ -30,30 +30,39 @@ function initCountdown() {
 }
 
 // 3. التحكم في المعاينة التفاعلية
-function openPreview() { document.getElementById('preview-modal').classList.remove('hidden'); }
-function closePreview() { document.getElementById('preview-modal').classList.add('hidden'); }
+function openPreview() { 
+    const modal = document.getElementById('preview-modal');
+    modal.classList.remove('hidden'); 
+    // تأثير ظهور بسيط
+    modal.firstElementChild.classList.remove('scale-95', 'opacity-0');
+    modal.firstElementChild.classList.add('scale-100', 'opacity-100');
+}
+
+function closePreview() { 
+    document.getElementById('preview-modal').classList.add('hidden'); 
+}
 
 function previewAction(type) {
     const chatFlow = document.getElementById('chatFlow');
     let response = "";
     
     switch(type) {
-        case 'scan': response = "🔎 نظام الفحص العالمي نشط.. أرسل الرابط المراد تحليله."; break;
-        case 'vault': response = "🔐 نظام التشفير العسكري نشط. أدخل النص المراد حمايته."; break;
-        case 'lang': response = "🌐 تم ضبط لغة الواجهة على: [العربية] بنجاح."; break;
+        case 'scan': response = "🔎 جاري الاتصال بخوادم الفحص... أرسل الرابط."; break;
+        case 'vault': response = "🔐 التشفير العسكري (AES-256) جاهز. أدخل البيانات."; break;
+        case 'lang': response = "🌐 System Language set to: [Arabic - العربية]."; break;
         case 'sig': 
-            response = `ℹ️ المطور المعتمد: @Nxr43 <br> 📦 الإصدار: V1.0 Stable <br> 🚀 السيرفر: BotVault.up`; 
+            response = `ℹ️ Dev Info:<br>User: @Nxr43 <br>Ver: 1.0 <br>Host: BotVault.up (Online)`; 
             break;
     }
 
     const div = document.createElement('div');
-    div.className = "bg-theme/20 p-2 rounded-lg ml-8 self-start text-white border border-theme/30 bubble-anim";
+    div.className = "bg-theme/20 p-2 rounded-lg rounded-tl-none ml-8 self-start text-white border-l-2 border-theme bubble-anim";
     div.innerHTML = response;
     
     chatFlow.appendChild(div);
     chatFlow.scrollTop = chatFlow.scrollHeight;
 
-    // إظهار تنبيه التواصل للتجربة الكاملة
+    // إظهار تنبيه التواصل
     showContactAlert();
 }
 
@@ -63,22 +72,25 @@ function showContactAlert() {
         alertDiv.id = 'contact-alert';
         alertDiv.className = "font-cairo text-[11px]";
         alertDiv.innerHTML = `
-            <p class="mb-2 text-white">🚀 لتجربة البوت الحية، تواصل مع المطور:</p>
-            <a href="https://t.me/Nxr43" target="_blank" class="bg-theme text-white px-4 py-2 rounded-xl block text-center font-bold shadow-theme">إرسال رسالة لـ @Nxr43</a>
+            <div class="flex items-center gap-2 mb-2">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                <p class="text-white font-bold">المطور متصل الآن</p>
+            </div>
+            <a href="https://t.me/Nxr43" target="_blank" class="bg-theme/90 hover:bg-theme text-white px-4 py-2 rounded-xl block text-center font-bold shadow-theme transition-all">تواصل مع @Nxr43 💬</a>
         `;
         document.body.appendChild(alertDiv);
         setTimeout(() => { if(alertDiv) alertDiv.remove(); }, 7000);
     }
 }
 
-// 4. الأنظمة التكميلية (الجزيئات والظهور)
+// 4. الإعدادات الأخرى
 particlesJS("particles-js", {
     particles: {
-        number: { value: 35 },
+        number: { value: 40 },
         color: { value: "#ffffff" },
         opacity: { value: 0.1 },
-        size: { value: 1 },
-        move: { enable: true, speed: 0.6 }
+        size: { value: 1.5 },
+        move: { enable: true, speed: 0.4 }
     }
 });
 

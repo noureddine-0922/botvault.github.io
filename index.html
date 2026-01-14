@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BotVault | حماية وأتمتة</title>
+    <title>BotVault | منظومة الحماية</title>
     <link rel="icon" href="https://img.icons8.com/fluency/48/shield-with-crown.png">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <link rel="stylesheet" href="style.css">
+    
     <script>
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.onkeydown = e => {
@@ -21,8 +22,8 @@
 
     <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none"></div>
 
-    <div class="fixed top-24 left-6 z-[100] reveal">
-        <div class="bg-gray-900/80 backdrop-blur-md border border-theme-soft p-3 rounded-2xl flex flex-col items-center gap-1 shadow-theme-sm text-center">
+    <div class="fixed top-24 left-6 z-[100] reveal hidden md:flex">
+        <div class="bg-gray-900/60 backdrop-blur-md border border-theme-soft p-3 rounded-2xl flex flex-col items-center gap-1 shadow-theme-sm text-center">
             <div class="relative w-12 h-12 flex items-center justify-center">
                 <svg class="w-full h-full transform -rotate-90">
                     <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3" fill="transparent" class="text-gray-800" />
@@ -35,75 +36,195 @@
     </div>
 
     <nav class="p-5 flex justify-between items-center bg-gray-950/80 border-b border-theme sticky top-0 z-50 backdrop-blur-xl">
-        <div class="flex items-center gap-3">
-            <div class="bg-theme p-2 rounded-lg shadow-theme">
+        <div class="flex items-center gap-3 group cursor-pointer">
+            <div class="bg-theme p-2 rounded-lg shadow-theme group-hover:rotate-12 transition-transform duration-300">
                 <i data-lucide="shield-check" class="w-6 h-6 text-white"></i>
             </div>
-            <h1 class="text-2xl font-black tracking-tighter font-poppins neon-text uppercase">BOT<span class="text-theme">VAULT</span></h1>
+            <h1 class="text-2xl font-black tracking-tighter font-poppins neon-text uppercase glitch-wrapper" data-text="BOTVAULT">
+                BOT<span class="text-theme">VAULT</span>
+            </h1>
         </div>
-        <div class="flex gap-6 font-cairo text-[10px] items-center uppercase tracking-widest">
+        <div class="hidden md:flex gap-6 font-cairo text-[10px] items-center uppercase tracking-widest">
             <a href="#" class="nav-link">الرئيسية</a>
-            <a href="#roadmap" class="nav-link">الخارطة</a>
-            <a href="#projects" class="nav-link">مشاريع</a>
-            <a href="#waitlist" class="nav-link text-theme font-bold">قائمة الانتظار</a>
+            <a href="#status" class="nav-link">حالة النظام</a>
+            <a href="#projects" class="nav-link">المنتجات</a>
+            <a href="#faq" class="nav-link">الأسئلة</a>
+            <a href="#waitlist" class="nav-link text-theme font-bold border border-theme px-3 py-1 rounded-full hover:bg-theme hover:text-white transition-all">قائمة الانتظار</a>
         </div>
     </nav>
 
-    <div class="reveal pt-20 flex justify-center z-10 relative">
-        <div class="bg-gray-900/50 border border-theme-soft p-8 rounded-3xl backdrop-blur-md shadow-theme-sm text-center">
-            <h4 class="text-sm font-cairo mb-6 text-theme font-bold uppercase tracking-widest">بدء النسخة التجريبية خلال:</h4>
+    <section id="status" class="reveal py-10 px-6 relative z-10 container mx-auto mt-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-gray-900/50 border border-gray-800 p-4 rounded-xl flex items-center gap-3 backdrop-blur-sm">
+                <div class="w-3 h-3 bg-emerald-500 rounded-full animate-ping"></div>
+                <div>
+                    <h5 class="text-[10px] text-gray-400 font-cairo">حالة السيرفر</h5>
+                    <span class="text-xs font-bold font-poppins text-emerald-500">Online ✅</span>
+                </div>
+            </div>
+            <div class="bg-gray-900/50 border border-gray-800 p-4 rounded-xl flex items-center gap-3 backdrop-blur-sm">
+                <div class="w-3 h-3 bg-blue-500 rounded-full shadow-[0_0_10px_#3b82f6]"></div>
+                <div>
+                    <h5 class="text-[10px] text-gray-400 font-cairo">نظام الاستضافة</h5>
+                    <span class="text-xs font-bold font-poppins text-blue-500">Active 🚀</span>
+                </div>
+            </div>
+            <div class="bg-gray-900/50 border border-gray-800 p-4 rounded-xl flex items-center gap-3 backdrop-blur-sm">
+                <div class="relative w-8 h-8">
+                    <svg class="w-full h-full -rotate-90"><circle cx="16" cy="16" r="14" stroke="#374151" stroke-width="3" fill="none"/><circle cx="16" cy="16" r="14" stroke="var(--theme-color)" stroke-width="3" fill="none" stroke-dasharray="88" stroke-dashoffset="35"/></svg>
+                    <span class="absolute inset-0 flex items-center justify-center text-[8px]">60%</span>
+                </div>
+                <div>
+                    <h5 class="text-[10px] text-gray-400 font-cairo">BotVault Security</h5>
+                    <span class="text-xs font-bold font-poppins text-theme">Processing...</span>
+                </div>
+            </div>
+            <div class="bg-gray-900/50 border border-gray-800 p-4 rounded-xl flex items-center gap-3 backdrop-blur-sm">
+                <i data-lucide="activity" class="w-5 h-5 text-purple-500"></i>
+                <div>
+                    <h5 class="text-[10px] text-gray-400 font-cairo">وقت الاستجابة</h5>
+                    <span class="text-xs font-bold font-poppins text-purple-500">24ms ⚡</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="reveal py-10 flex justify-center z-10 relative">
+        <div class="bg-gray-900/30 border border-theme-soft p-6 rounded-3xl backdrop-blur-sm text-center">
+            <h4 class="text-xs font-cairo mb-4 text-theme font-bold uppercase tracking-widest">إطلاق النسخة المستقرة خلال:</h4>
             <div id="countdown" class="flex gap-4 font-poppins justify-center">
-                <div class="timer-box"><span id="days">00</span><p class="text-[10px] font-cairo uppercase">يوم</p></div>
-                <div class="timer-box"><span id="hours">00</span><p class="text-[10px] font-cairo uppercase">ساعة</p></div>
-                <div class="timer-box"><span id="minutes">00</span><p class="text-[10px] font-cairo uppercase">دقيقة</p></div>
-                <div class="timer-box"><span id="seconds">00</span><p class="text-[10px] font-cairo uppercase">ثانية</p></div>
+                <div class="timer-box"><span id="days">00</span><p class="text-[9px] font-cairo uppercase">يوم</p></div>
+                <div class="timer-box"><span id="hours">00</span><p class="text-[9px] font-cairo uppercase">ساعة</p></div>
+                <div class="timer-box"><span id="minutes">00</span><p class="text-[9px] font-cairo uppercase">دقيقة</p></div>
+                <div class="timer-box"><span id="seconds">00</span><p class="text-[9px] font-cairo uppercase">ثانية</p></div>
             </div>
         </div>
     </div>
 
-    <div id="preview-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-6 bg-black/95 backdrop-blur-md">
-        <div class="bg-gray-900 border border-theme rounded-[2.5rem] max-w-sm w-full overflow-hidden shadow-theme-sm">
-            <div class="p-4 border-b border-gray-800 flex justify-between items-center bg-gray-800/50 font-cairo">
-                <span class="text-xs font-bold text-theme">🤖 واجهة BotVault V1.0</span>
-                <button onclick="closePreview()" class="text-gray-400 hover:text-white transition-all"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <div id="preview-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-6 bg-black/80 backdrop-blur-xl">
+        <div class="glass-card border border-white/10 rounded-[2rem] max-w-sm w-full overflow-hidden shadow-2xl transform scale-100 transition-all">
+            <div class="p-4 border-b border-white/5 flex justify-between items-center bg-white/5 font-cairo">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span class="text-xs font-bold text-white tracking-wide">Terminal: BotVault V1.0</span>
+                </div>
+                <button onclick="closePreview()" class="text-gray-400 hover:text-white transition-all hover:rotate-90"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
+            
             <div class="p-6">
-                <div class="mb-5 font-cairo">
-                    <div class="flex justify-between text-[9px] text-gray-400 mb-2">
-                        <span>⚙️ حالة تنفيذ النظام</span>
+                <div class="mb-6 font-cairo">
+                    <div class="flex justify-between text-[9px] text-gray-300 mb-2">
+                        <span>⚙️ جاهزية النظام</span>
                         <span class="text-theme font-bold">60%</span>
                     </div>
-                    <div class="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden">
-                        <div class="bg-theme h-full shadow-theme" style="width: 60%; transition: width 1s;"></div>
+                    <div class="w-full bg-gray-700/50 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-theme h-full shadow-[0_0_15px_var(--theme-color)]" style="width: 60%"></div>
                     </div>
                 </div>
 
-                <div id="chatFlow" class="w-full bg-gray-950 border border-gray-800 rounded-2xl p-4 font-cairo text-[10px] space-y-3 h-44 overflow-y-auto flex flex-col scroll-smooth">
-                    <div class="bg-theme/20 p-2 rounded-lg ml-8 self-start text-white border border-theme/30 bubble-anim">
-                        مرحباً بك! أنا نظام آمان المسؤول عن حمايتك. لتجربة النسخة الكاملة تواصل مع المطور @Nxr43.
+                <div id="chatFlow" class="w-full bg-black/40 border border-white/5 rounded-xl p-4 font-mono text-[10px] space-y-3 h-48 overflow-y-auto flex flex-col scroll-smooth shadow-inner">
+                    <div class="text-theme mb-2 opacity-50 text-[8px]">--- Connection Established with BotVault.up ---</div>
+                    <div class="bg-theme/20 p-2 rounded-lg rounded-tl-none self-start text-white border-l-2 border-theme bubble-anim">
+                        مرحباً بك! النظام الأمني نشط. اختر عملية لتجربتها أو تواصل مع المطور.
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-2 mt-4 font-cairo text-[10px]">
-                    <button onclick="previewAction('scan')" class="bg-gray-800 hover:bg-theme border border-gray-700 py-2 rounded-lg transition-all">🛡️ فحص الرابط</button>
-                    <button onclick="previewAction('vault')" class="bg-gray-800 hover:bg-theme border border-gray-700 py-2 rounded-lg transition-all">🔐 تشفير</button>
-                    <button onclick="previewAction('lang')" class="bg-gray-800 hover:bg-theme border border-gray-700 py-2 rounded-lg transition-all">🌐 اللغة</button>
-                    <button onclick="previewAction('sig')" class="bg-gray-800 hover:bg-theme border border-gray-700 py-2 rounded-lg transition-all">ℹ️ المطور</button>
+                <div class="grid grid-cols-2 gap-3 mt-5 font-cairo text-[10px]">
+                    <button onclick="previewAction('scan')" class="glitch-btn bg-white/5 hover:bg-theme/80 border border-white/10 py-3 rounded-xl transition-all text-white">🛡️ فحص الرابط</button>
+                    <button onclick="previewAction('vault')" class="glitch-btn bg-white/5 hover:bg-theme/80 border border-white/10 py-3 rounded-xl transition-all text-white">🔐 تشفير البيانات</button>
+                    <button onclick="previewAction('lang')" class="glitch-btn bg-white/5 hover:bg-theme/80 border border-white/10 py-3 rounded-xl transition-all text-white">🌐 تغيير اللغة</button>
+                    <button onclick="previewAction('sig')" class="glitch-btn bg-white/5 hover:bg-theme/80 border border-white/10 py-3 rounded-xl transition-all text-white">ℹ️ معلومات المطور</button>
                 </div>
 
-                <div class="mt-4 text-center">
-                    <a href="https://t.me/Nxr43" target="_blank" class="text-[9px] text-theme font-bold font-cairo underline hover:text-white transition-all italic">فتح دردشة خاصة مع المطور لتجربة البوت 💬</a>
+                <div class="mt-5 text-center pt-4 border-t border-white/5">
+                    <a href="https://t.me/Nxr43" target="_blank" class="text-[10px] text-gray-400 hover:text-theme transition-all flex justify-center items-center gap-2">
+                        <i data-lucide="message-circle" class="w-3 h-3"></i>
+                        اضغط هنا للتحدث مع المطور مباشرة
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <section id="projects" class="reveal py-24 px-6 relative z-10 max-w-5xl mx-auto text-center">
-        <h3 class="text-center text-2xl font-bold mb-12 font-cairo italic">المشاريع التقنية</h3>
-        <div onclick="openPreview()" class="p-12 bg-gray-900/40 border border-theme/30 rounded-[2.5rem] shadow-theme-sm cursor-pointer hover:scale-[1.02] transition-all group inline-block mx-auto">
-            <i data-lucide="shield-check" class="w-14 h-14 text-emerald-500 mx-auto mb-4 group-hover:scale-110 transition-transform"></i>
-            <h4 class="text-2xl font-bold mb-2 text-emerald-500 font-cairo">بوت أمان BotVault</h4>
-            <p class="text-gray-500 text-sm font-cairo">انقر هنا للمعاينة السريعة داخل الموقع</p>
+    <section id="projects" class="reveal py-24 px-6 relative z-10 container mx-auto">
+        <div class="text-center mb-16">
+            <h3 class="text-3xl font-bold font-cairo glitch-wrapper inline-block" data-text="الترسانة البرمجية">الترسانة البرمجية</h3>
+            <p class="text-gray-500 text-xs mt-2 font-cairo">أحدث ما توصلت إليه تقنيات الحماية والأتمتة</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            
+            <div onclick="openPreview()" class="group relative bg-gray-900/40 border border-theme/50 rounded-[2rem] p-8 hover:-translate-y-2 transition-all duration-500 cursor-pointer overflow-hidden">
+                <div class="absolute inset-0 bg-theme/5 group-hover:bg-theme/10 transition-all"></div>
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-theme/20 rounded-2xl flex items-center justify-center mb-6 shadow-theme group-hover:scale-110 transition-transform">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-theme"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2 font-cairo text-white">بوت آمان BotVault</h4>
+                    <span class="bg-emerald-500/10 text-emerald-500 text-[9px] px-2 py-1 rounded mb-4 border border-emerald-500/20">جاهز للمعاينة ✅</span>
+                    <p class="text-gray-400 text-xs font-cairo leading-relaxed mb-6">البوت الأول للحماية من الروابط والسبام، مع نظام رد ذكي يعمل بالذكاء الاصطناعي.</p>
+                    <button class="text-theme text-xs font-bold font-cairo flex items-center gap-1 group-hover:gap-2 transition-all">
+                        معاينة النظام <i data-lucide="arrow-left" class="w-3 h-3"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="group relative bg-gray-900/20 border border-gray-800 rounded-[2rem] p-8 opacity-70 hover:opacity-100 transition-all">
+                <div class="absolute top-4 left-4 bg-gray-800 p-2 rounded-full"><i data-lucide="lock" class="w-4 h-4 text-gray-500"></i></div>
+                <div class="flex flex-col items-center text-center mt-4">
+                    <div class="w-14 h-14 bg-gray-800 rounded-2xl flex items-center justify-center mb-6 grayscale">
+                        <i data-lucide="bot" class="w-7 h-7 text-gray-400"></i>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2 font-cairo text-gray-300">AutoModerator V2</h4>
+                    <span class="bg-gray-800 text-gray-500 text-[9px] px-2 py-1 rounded mb-4">قريباً</span>
+                    <p class="text-gray-500 text-xs font-cairo leading-relaxed">نظام إدارة المجموعات المتقدم مع تصفية تلقائية للرسائل المزعجة.</p>
+                </div>
+            </div>
+
+            <div class="group relative bg-gray-900/20 border border-gray-800 rounded-[2rem] p-8 opacity-70 hover:opacity-100 transition-all">
+                <div class="absolute top-4 left-4 bg-gray-800 p-2 rounded-full"><i data-lucide="lock" class="w-4 h-4 text-gray-500"></i></div>
+                <div class="flex flex-col items-center text-center mt-4">
+                    <div class="w-14 h-14 bg-gray-800 rounded-2xl flex items-center justify-center mb-6 grayscale">
+                        <i data-lucide="file-key" class="w-7 h-7 text-gray-400"></i>
+                    </div>
+                    <h4 class="text-lg font-bold mb-2 font-cairo text-gray-300">FileSecure Host</h4>
+                    <span class="bg-gray-800 text-gray-500 text-[9px] px-2 py-1 rounded mb-4">قيد التطوير</span>
+                    <p class="text-gray-500 text-xs font-cairo leading-relaxed">خدمة تخزين سحابي مشفرة للملفات الحساسة مع روابط ذاتية التدمير.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="reveal py-20 px-6 relative z-10 max-w-3xl mx-auto">
+        <h3 class="text-center text-xl font-bold mb-10 font-cairo">الأسئلة المتداولة <span class="text-theme">FAQ</span></h3>
+        <div class="space-y-4 font-cairo">
+            <details class="group bg-gray-900/40 border border-gray-800 rounded-xl overflow-hidden cursor-pointer">
+                <summary class="flex justify-between items-center p-4 text-sm font-bold text-gray-300 hover:text-theme transition-colors">
+                    <span class="flex items-center gap-2"><span class="text-theme">root@user:~$</span> كيف يعمل نظام الفحص؟</span>
+                    <span class="transform group-open:rotate-180 transition-transform"><i data-lucide="chevron-down" class="w-4 h-4"></i></span>
+                </summary>
+                <div class="p-4 pt-0 text-xs text-gray-400 leading-relaxed border-t border-gray-800/50 bg-black/20">
+                    يعتمد النظام على مقارنة الروابط بقواعد بيانات عالمية (مثل VirusTotal) بالإضافة إلى خوارزمياتنا الخاصة في BotVault لكشف الاحتيال قبل حدوثه.
+                </div>
+            </details>
+            <details class="group bg-gray-900/40 border border-gray-800 rounded-xl overflow-hidden cursor-pointer">
+                <summary class="flex justify-between items-center p-4 text-sm font-bold text-gray-300 hover:text-theme transition-colors">
+                    <span class="flex items-center gap-2"><span class="text-theme">root@user:~$</span> هل بياناتي مشفرة؟</span>
+                    <span class="transform group-open:rotate-180 transition-transform"><i data-lucide="chevron-down" class="w-4 h-4"></i></span>
+                </summary>
+                <div class="p-4 pt-0 text-xs text-gray-400 leading-relaxed border-t border-gray-800/50 bg-black/20">
+                    نعم، نستخدم تشفير AES-256 العسكري لجميع النصوص والبيانات التي تمر عبر البوت، ولا يتم تخزين أي محادثات في سجلات دائمة.
+                </div>
+            </details>
+            <details class="group bg-gray-900/40 border border-gray-800 rounded-xl overflow-hidden cursor-pointer">
+                <summary class="flex justify-between items-center p-4 text-sm font-bold text-gray-300 hover:text-theme transition-colors">
+                    <span class="flex items-center gap-2"><span class="text-theme">root@user:~$</span> كيف أتواصل مع المطور؟</span>
+                    <span class="transform group-open:rotate-180 transition-transform"><i data-lucide="chevron-down" class="w-4 h-4"></i></span>
+                </summary>
+                <div class="p-4 pt-0 text-xs text-gray-400 leading-relaxed border-t border-gray-800/50 bg-black/20">
+                    يمكنك التواصل مباشرة عبر المعاينة بالضغط على زر "المطور" أو عبر تيليجرام: @Nxr43.
+                </div>
+            </details>
         </div>
     </section>
 
@@ -112,20 +233,20 @@
             <h3 class="font-cairo text-xl font-bold mb-4">انضم لقائمة الانتظار</h3>
             <form onsubmit="handleWaitlist(event)" class="flex gap-2">
                 <input type="email" required placeholder="بريدك الإلكتروني..." class="flex-1 bg-gray-800 rounded-xl px-4 py-3 outline-none border border-gray-700 focus:border-theme text-xs font-cairo">
-                <button type="submit" class="bg-theme px-6 py-3 rounded-xl text-xs font-bold font-cairo shadow-theme">تفعيل</button>
+                <button type="submit" class="bg-theme px-6 py-3 rounded-xl text-xs font-bold font-cairo shadow-theme glitch-wrapper" data-text="تفعيل">تفعيل</button>
             </form>
             <p id="wait-msg" class="mt-4 text-emerald-500 text-xs font-cairo hidden">تمت إضافتك بنجاح! كونوا على الموعد.</p>
         </div>
     </section>
 
-    <div class="py-12 flex flex-col items-center gap-6 relative z-10">
+    <div class="py-12 flex flex-col items-center gap-6 relative z-10 bg-black/40 backdrop-blur-md">
         <div class="flex gap-3 bg-gray-900/80 p-2 rounded-full border border-gray-800">
             <button onclick="setTheme('blue')" class="w-5 h-5 rounded-full bg-blue-500 hover:scale-110 transition-all"></button>
             <button onclick="setTheme('green')" class="w-5 h-5 rounded-full bg-emerald-500 hover:scale-110 transition-all"></button>
             <button onclick="setTheme('purple')" class="w-5 h-5 rounded-full bg-purple-500 hover:scale-110 transition-all"></button>
         </div>
-        <footer class="font-cairo text-[9px] text-gray-700 uppercase tracking-widest">
-            BotVault &copy; 2024 | All Security Reserved
+        <footer class="font-cairo text-[9px] text-gray-700 uppercase tracking-widest text-center">
+            BotVault &copy; 2024 | Security Systems <br> Developed by @Nxr43
         </footer>
     </div>
 
